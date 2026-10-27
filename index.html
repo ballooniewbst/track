@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Radar Meetup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1><span class="dot"></span> Radar Meetup</h1>
+      <p class="tag">Opt-in location sharing. Everyone chooses to be seen, and can stop any time.</p>
+    </header>
+
+    <!-- Step 1: join a room -->
+    <section id="join" class="card">
+      <h2>Join a room</h2>
+      <form id="joinForm">
+        <label>Your name
+          <input id="name" maxlength="24" placeholder="e.g. Alex" required autocomplete="off" />
+        </label>
+        <label>Room code
+          <input id="room" maxlength="32" placeholder="Pick a code and share it" required autocomplete="off" />
+        </label>
+        <button type="submit">Join</button>
+      </form>
+      <p class="fine">Joining does not share your location. You decide that on the next screen.</p>
+    </section>
+
+    <!-- Step 2: radar + controls -->
+    <section id="app" class="hidden">
+      <div class="card consent">
+        <strong>Heads up:</strong> while you are sharing, everyone in this room can see your position.
+        You only see others while you are sharing too. Press <em>Stop sharing</em> and your location is
+        removed right away.
+      </div>
+
+      <div class="controls">
+        <button id="startBtn">Start sharing my location</button>
+        <button id="stopBtn" class="secondary hidden">Stop sharing</button>
+        <button id="leaveBtn" class="ghost">Leave room</button>
+      </div>
+      <p id="status" class="status">Not sharing</p>
+
+      <div class="radarWrap">
+        <canvas id="radar" width="640" height="640"></canvas>
+      </div>
+
+      <div class="card">
+        <h2>In room <code id="roomLabel"></code></h2>
+        <ul id="members"></ul>
+      </div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
