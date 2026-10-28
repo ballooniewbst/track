@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Home widget · 4x2 countdown</title>
+<meta name="theme-color" content="#e6eef3">
+<style>
+:root{--bg:#e6eef3;--ink:#16324a;--mute:#51697d;--line:#b9cad6;--home:#f0a030;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0f2234;--ink:#e3edf4;--mute:#92a9bb;--line:#2c4760;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;padding:max(24px,env(safe-area-inset-top)) 20px max(32px,env(safe-area-inset-bottom))}
+main{max-width:640px;margin:0 auto}
+h1{font-size:2rem;letter-spacing:-.02em;line-height:1.1;margin:0 0 8px}
+p{margin:0 0 16px;color:var(--mute)}
+iframe{display:block;width:100%;aspect-ratio:2/1;border:0;border-radius:24px;background:#16324a;margin:20px 0}
+.row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:20px}
+label{display:flex;flex-direction:column;gap:4px;font-size:.9rem;font-weight:600}
+input{font:inherit;color:var(--ink);background:transparent;border:2px solid var(--line);border-radius:10px;padding:8px 10px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+button{font:inherit;font-weight:700;color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:999px;padding:12px 20px;cursor:pointer}
+button.main{background:var(--home);border-color:var(--home);color:#3a2200}
+button:hover{filter:brightness(1.08)}
+:focus-visible{outline:3px solid var(--home);outline-offset:3px}
+#msg{min-height:1.5em;font-size:.9rem;color:var(--mute)}
+h2{font-size:1.1rem;margin:24px 0 6px}
+ol{margin:0;padding-left:20px;color:var(--mute)}
+li{margin-bottom:6px}
+small{display:block;margin-top:24px;color:var(--mute)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Your 4x2 home countdown</h1>
+  <p>Pick your dates, download the widget, and drop it on your home screen. It counts the days on its own.</p>
+
+  <iframe id="pv" title="Widget preview"></iframe>
+
+  <div class="row">
+    <label>Going home on<input type="date" id="to" value="2026-11-20"></label>
+    <label>Counting from<input type="date" id="from" value="2026-10-28"></label>
+  </div>
+
+  <div class="btns">
+    <button class="main" id="dl" type="button">Download widget</button>
+    <button id="img" type="button">Download image</button>
+  </div>
+  <div id="msg" role="status"></div>
+
+  <h2>Android (4x2 widget)</h2>
+  <ol>
+    <li>Tap Download widget. The file is saved as <b>going-home-widget-4x2.html</b>.</li>
+    <li>Install an HTML widget app from the Play Store (for example “HTML Widget”).</li>
+    <li>Long-press your home screen, add its widget, stretch it to 4x2, and choose the downloaded file.</li>
+  </ol>
+  <h2>iPhone</h2>
+  <ol>
+    <li>Tap Download image and save it to Photos.</li>
+    <li>Add a Photos widget (medium size, which is 4x2) and choose that picture.</li>
+  </ol>
+  <small>Browsers can’t place a widget on a home screen by themselves, so the download plus the steps above is as close as a website gets. The image is a snapshot of today; download it again to refresh. The HTML widget updates itself.</small>
+</main>
+
+<script type="text/plain" id="wt"><!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Going home widget</title>
+<style>
+:root{--bg:#16324a;--ink:#e8f0f5;--mute:#9db3c4;--line:#3b5873;--home:#f0a030}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);overflow:hidden}
+body{display:grid;place-items:center;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
+.w{width:min(100vw,200vh);aspect-ratio:2/1;container-type:size;display:grid;grid-template-columns:44% 1fr;gap:4cqw;padding:5cqw 5cqw 4.5cqw;cursor:pointer;user-select:none}
+.l{display:flex;flex-direction:column;justify-content:center}
+.num{font-size:36cqw;font-weight:800;line-height:.8;letter-spacing:-.05em;font-variant-numeric:tabular-nums;margin:0}
+.num.s{font-size:27cqw}
+.r{display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.lab{font-size:5.2cqw;font-weight:700;line-height:1.1;margin:0}
+.date{font-size:3.4cqw;color:var(--mute);margin:.8cqw 0 0}
+.g{display:grid;gap:.8cqw;margin:2cqw 0}
+.g i{aspect-ratio:1;border:.35cqw solid var(--line);border-radius:.9cqw}
+.g i.d{background:var(--ink);border-color:var(--ink)}
+.g i.t{border:.6cqw solid var(--ink);box-shadow:0 0 0 .5cqw var(--bg),0 0 0 .9cqw var(--ink)}
+.g i.h{background:var(--home);border-color:var(--home)}
+.q{font-size:3.5cqw;line-height:1.25;font-weight:600;margin:0;border-left:.9cqw solid var(--home);padding-left:2cqw}
+</style></head>
+<body>
+<div class="w" id="w" title="Tap for another quote">
+  <div class="l"><p class="num" id="num">–</p></div>
+  <div class="r">
+    <div><p class="lab" id="lab"></p><p class="date" id="date"></p></div>
+    <div class="g" id="g"></div>
+    <p class="q" id="q"></p>
+  </div>
+</div>
+<script>
+const TARGET=new Date("__T__T00:00:00"),START=new Date("__S__T00:00:00"),QUOTES=__Q__;
+const DAY=864e5,$=id=>document.getElementById(id);
+const mid=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
+let off=0;
+function quote(){const n=Math.floor(mid(new Date())/DAY)+off;$("q").textContent=QUOTES[((n%QUOTES.length)+QUOTES.length)%QUOTES.length]}
+function render(){
+  const today=mid(new Date()),total=Math.round((TARGET-START)/DAY),left=Math.round((TARGET-today)/DAY);
+  const idx=Math.min(total,Math.max(0,total-left));
+  $("num").textContent=Math.max(0,left);$("num").className="num"+(left>99?" s":"");
+  $("lab").textContent=left>1?"days until home":left===1?"day until home":left===0?"Home today!":"You’re home";
+  $("date").textContent=TARGET.toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"long"});
+  const g=$("g");g.innerHTML="";g.style.gridTemplateColumns="repeat("+Math.ceil((total+1)/2)+",1fr)";
+  for(let i=0;i<=total;i++){const c=document.createElement("i");c.className=i===total?"h":i<idx?"d":i===idx?"t":"";g.appendChild(c)}
+  quote();
+}
+$("w").onclick=()=>{off++;quote()};
+render();setInterval(render,60000);
+<\/script></body></html></script>
+
+<script>
+const QUOTES=[
+  "One day closer. That’s the whole job.","Home is waiting. Keep going.","Tired is temporary. Home is not.",
+  "Cross it off. Move on. Repeat.","You’re arriving, one day at a time.","Small steps still reach the front door.",
+  "Patience is progress you can’t see yet.","The hard days count too.","Most of the hard part is behind you.",
+  "Keep the end in sight.","One more sleep, then one more.","Be proud of every day crossed off."
+];
+const DAY=864e5,$=id=>document.getElementById(id);
+const SRC=$("wt").textContent.replace(/<\\\/script>/g,"</script>");
+const build=()=>SRC.replace("__T__",$("to").value).replace("__S__",$("from").value).replace("__Q__",()=>JSON.stringify(QUOTES));
+const ok=()=>$("to").value&&$("from").value&&$("to").value>$("from").value;
+function preview(){if(ok())$("pv").srcdoc=build();else $("msg").textContent="Choose a going-home date that is after the start date."}
+function save(name,blob){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();$("msg").textContent="Saved "+name+". Check your Downloads folder."}
+$("to").onchange=$("from").onchange=()=>{$("msg").textContent="";preview()};
+$("dl").onclick=()=>{if(ok())save("going-home-widget-4x2.html",new Blob([build()],{type:"text/html"}))};
+$("img").onclick=()=>{
+  if(!ok())return;
+  const W=1600,H=800,c=document.createElement("canvas");c.width=W;c.height=H;const x=c.getContext("2d");
+  const to=new Date($("to").value+"T00:00:00"),st=new Date($("from").value+"T00:00:00"),t=new Date();t.setHours(0,0,0,0);
+  const total=Math.round((to-st)/DAY),left=Math.round((to-t)/DAY),idx=Math.min(total,Math.max(0,total-left));
+  const F="system-ui,-apple-system,Segoe UI,Roboto,sans-serif";
+  x.fillStyle="#16324a";x.fillRect(0,0,W,H);
+  x.fillStyle="#e8f0f5";x.font="800 "+(left>99?420:560)+"px "+F;x.fillText(Math.max(0,left),70,left>99?560:590);
+  const X=720;
+  x.font="700 76px "+F;x.fillText(left>1?"days until home":left===1?"day until home":left===0?"Home today!":"You’re home",X,150);
+  x.fillStyle="#9db3c4";x.font="400 46px "+F;x.fillText(to.toLocaleDateString(undefined,{weekday:"short",day:"numeric",month:"long"}),X,212);
+  const cols=Math.ceil((total+1)/2),gap=12,cw=(W-80-X-gap*(cols-1))/cols;
+  for(let i=0;i<=total;i++){
+    const cx=X+(i%cols)*(cw+gap),cy=270+Math.floor(i/cols)*(cw+gap);
+    x.beginPath();x.roundRect(cx,cy,cw,cw,10);
+    if(i===total){x.fillStyle="#f0a030";x.fill()}
+    else if(i<idx){x.fillStyle="#e8f0f5";x.fill()}
+    else{x.lineWidth=i===idx?7:3;x.strokeStyle=i===idx?"#e8f0f5":"#3b5873";x.stroke()}
+  }
+  const q=QUOTES[Math.floor(t/DAY)%QUOTES.length].split(" "),lines=[];let ln="";
+  x.font="600 50px "+F;
+  q.forEach(w=>{const s=ln?ln+" "+w:w;if(x.measureText(s).width>740&&ln){lines.push(ln);ln=w}else ln=s});lines.push(ln);
+  x.fillStyle="#f0a030";x.fillRect(X,490,10,(lines.length-1)*62+62);
+  x.fillStyle="#e8f0f5";lines.forEach((l,i)=>x.fillText(l,X+34,535+i*62));
+  c.toBlob(b=>save("going-home-widget-4x2.png",b));
+};
+preview();
+</script>
+</body>
+</html>
